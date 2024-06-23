@@ -1,55 +1,67 @@
 const Task = require('../models/index');
 
+const handleErrorResponse = (res, statusCode, message) => {
+  res.status(statusCode).json({ message });
+};
+
+// GET 
 exports.getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
     res.json(tasks);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    handleErrorResponse(res, 500, err.message);
   }
 };
 
 // POST 
 exports.createTask = async (req, res) => {
-  const task = new Task({
-    title: req.body.title,
-    description: req.body.description,
-  });
+  const { title, description } = req.body;
 
   try {
-    const newTask = await task.save();
+    const newTask = await Task.create({ title, description });
     res.status(201).json(newTask);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    handleErrorResponse(res, 400, err.message);
   }
 };
 
-// PUT /tasks/:taskId
+// PUT 
 exports.updateTask = async (req, res) => {
   const { taskId } = req.params;
+  const { title, description } = req.body;
+
   try {
-    const updatedTask = await Task.findByIdAndUpdate(taskId, req.body, { new: true });
+    const updatedTask = await Task.findByIdAndUpdate(
+      taskId,
+      { title, description },
+      { new: true, runValidators: true }
+    );
+
     if (!updatedTask) {
-      return res.status(404).json({ message: 'Task not found' });
+      return handleErrorResponse(res, 404, 'Task not found');
     }
+
     res.json(updatedTask);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    handleErrorResponse(res, 500, 'Server error');
   }
 };
 
-// DELETE /tasks/:taskId
+// DELETE
 exports.deleteTask = async (req, res) => {
   const { taskId } = req.params;
 
   try {
     const deletedTask = await Task.findByIdAndDelete(taskId);
+
     if (!deletedTask) {
-      return res.status(404).json({ message: 'Task not found' });
+      return handleErrorResponse(res, 404, 'Task not found');
     }
+
     res.json({ message: 'Task deleted' });
   } catch (err) {
     console.error('Error deleting task:', err);
-    res.status(500).json({ message: 'Failed to delete task. Please try again later.' });
+    handleErrorResponse(res, 500, 'Failed to delete task. Please try again later.');
   }
 };

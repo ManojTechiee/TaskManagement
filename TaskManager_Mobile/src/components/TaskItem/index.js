@@ -1,4 +1,3 @@
-// components/TaskItem.js
 import React, { useContext } from 'react';
 import { View, Text, Button } from 'react-native';
 import { TaskContext } from '../../context/index';
