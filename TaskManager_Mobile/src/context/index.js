@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const TaskContext = createContext();
 
-const baseUrl ='http://localhost:3000/tasks'
+const baseUrl = 'http://localhost:3000/tasks'
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
@@ -52,7 +52,7 @@ const TaskProvider = ({ children }) => {
 
 
   useEffect(() => {
-      fetchTasks();
+    fetchTasks();
   }, []);
 
   return (
