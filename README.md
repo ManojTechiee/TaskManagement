@@ -18,23 +18,23 @@ This is a full stack Task Management Application built using React Native for th
 
 #### Get all tasks
 
-```http
+```bash
   GET /tasks
 ```
 
 #### Add task
 
-```http
+```bash
   POST /tasks
-```
-#### Upddate task
-
-```http
-  PUT /tasks/${id}
 ```
 #### Update task
 
-```http
+```bash
+  PUT /tasks/${id}
+```
+#### Delete task
+
+```bash
   DELETE /tasks/${id}
 ```
 
