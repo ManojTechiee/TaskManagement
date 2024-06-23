@@ -3,8 +3,13 @@ import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#f8f7f4',
+      backgroundColor: '#fff',
       flex:1
+    },
+    noDataText: {
+      fontSize: 12,
+      textAlign: 'center',
+      marginTop: 20,
     },
   });
 

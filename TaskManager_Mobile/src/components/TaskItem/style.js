@@ -12,12 +12,13 @@ const styles = StyleSheet.create({
     },
     taskTitle: {
       fontSize: 18,
-      fontWeight: 'bold',
-      textDecorationStyle: 'solid',
+      fontWeight: '600',
+      textDecorationStyle: 'double',
     },
     taskDescription: {
-      fontSize: 16,
+      fontSize: 14,
       marginBottom: 10,
+      color:"gray"
     },
     buttonContainer: {
       flexDirection: 'row',

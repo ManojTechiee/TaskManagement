@@ -20,7 +20,7 @@ const TaskItem = ({ task, navigation }) => {
         <Text style={styles.taskDescription}>{task.description}</Text>
         <View style={styles.buttonContainer}>
           <CustomButton
-          text={task.completed ? 'Undo' : 'Complete'}
+          text={task.completed ? 'Uncomplete' : 'Complete'}
           onPress={toggleComplete}
           />
           <CustomButton

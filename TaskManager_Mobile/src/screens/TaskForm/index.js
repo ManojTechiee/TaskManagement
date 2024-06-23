@@ -18,7 +18,6 @@ const TaskForm = ({ route, navigation }) => {
       Alert.alert('Validation Error', 'Title cannot be empty.');
       return;
     }
-
     const newTask = { title, description };
     if (isUpdate) {
       updateTask(route.params.task._id, newTask);
@@ -27,10 +26,11 @@ const TaskForm = ({ route, navigation }) => {
     }
     navigation.goBack();
   };
-// const handleReset =()=>{
-//   setTitle('')
-//   setDescription('')
-// }
+  
+const handleReset =()=>{
+  setTitle('')
+  setDescription('')
+}
   return (
     <SafeAreaView style={styles.container}>
       
@@ -54,10 +54,10 @@ const TaskForm = ({ route, navigation }) => {
     text={isUpdate ? "Update Task" : "Add Task"}
     onPress={handleSubmit}
     />
-   {/* <CustomButton
+   <CustomButton
     text="Reset All"
     onPress={handleReset}
-    /> */}
+    />
   </SafeAreaView>
   );
 };

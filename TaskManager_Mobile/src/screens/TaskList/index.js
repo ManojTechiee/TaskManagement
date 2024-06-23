@@ -1,32 +1,30 @@
-import React, { useContext,useState ,useEffect} from 'react';
-import { View, FlatList, Button , SafeAreaView} from 'react-native';
+import React, { useContext} from 'react';
+import { Text, FlatList, Button , SafeAreaView} from 'react-native';
 import { TaskContext } from '../../context/index';
 import TaskItem from '../../components/TaskItem/index';
 import styles from './style';
 const TaskList = ({ navigation }) => {
-  const { tasks:taskContext } = useContext(TaskContext);
-  const [tasks, settasks] = useState(taskContext)
-  useEffect(() => {
-   settasks(taskContext)
-  }, [taskContext])
+
+  const { tasks } = useContext(TaskContext);
+  const noData = () => (
+    <Text style={styles.noDataText}>No tasks available</Text>
+  );
+  
   return (
     <SafeAreaView style={styles.container}>
-         <Button
+        <Button
         title="Add Task"
         onPress={() => navigation.navigate('TaskForm')}
       />
       <FlatList
         data={tasks}
         renderItem={({ item }) => <TaskItem task={item} navigation={navigation} />}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         scrollEnabled={true}
+        ListEmptyComponent={noData}
       />
-     
     </SafeAreaView>
   );
 };
-
-
-
 
 export default TaskList;
