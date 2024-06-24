@@ -1,5 +1,5 @@
 
-# Mobile Task Management Application
+# Task Management App
 
 This is a full stack Task Management Application built using React Native for the frontend and Node.js with Express and MongoDB for the backend.
 
