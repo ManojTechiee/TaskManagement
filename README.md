@@ -56,7 +56,7 @@ Backend Server
   npm init
 ```
   ```bash
-    npx npx react-native run-ios
+    npx react-native run-ios
 ```
 ## Screenshots
 
