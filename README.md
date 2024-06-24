@@ -27,12 +27,12 @@ This is a full stack Task Management Application built using React Native for th
 ```http
   POST /tasks
 ```
-#### Upddate task
+#### Update task
 
 ```http
   PUT /tasks/${id}
 ```
-#### Update task
+#### Delete task
 
 ```http
   DELETE /tasks/${id}
