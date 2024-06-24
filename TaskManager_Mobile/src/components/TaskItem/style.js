@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     },
     taskDescription: {
       fontSize: 14,
-      marginBottom: 10,
-      color:"gray"
+      color:"gray",
+      marginVertical:10
     },
     buttonContainer: {
       flexDirection: 'row',

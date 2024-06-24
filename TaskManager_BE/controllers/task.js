@@ -29,19 +29,12 @@ exports.createTask = async (req, res) => {
 // PUT 
 exports.updateTask = async (req, res) => {
   const { taskId } = req.params;
-  const { title, description } = req.body;
-
   try {
-    const updatedTask = await Task.findByIdAndUpdate(
-      taskId,
-      { title, description },
-      { new: true, runValidators: true }
-    );
+    const updatedTask = await Task.findByIdAndUpdate(taskId, req.body, { new: true });
 
     if (!updatedTask) {
       return handleErrorResponse(res, 404, 'Task not found');
     }
-
     res.json(updatedTask);
   } catch (err) {
     handleErrorResponse(res, 500, 'Server error');

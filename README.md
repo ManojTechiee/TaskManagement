@@ -60,5 +60,7 @@ Backend Server
 ```
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/QMBC2ktX/Screenshot-2024-06-24-at-3-04-48-AM.png)
+![App Screenshot](https://i.postimg.cc/9fWPjk9G/Simulator-Screenshot-i-Phone-14-2024-06-24-at-07-42-04.png)
+![App Screenshot](https://i.postimg.cc/vm3r8v7C/Simulator-Screenshot-i-Phone-14-2024-06-24-at-07-42-25.png)
+
 

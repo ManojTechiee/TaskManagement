@@ -7,9 +7,11 @@ const TaskList = ({ navigation }) => {
 
   const { tasks } = useContext(TaskContext);
   const noData = () => (
-    <Text style={styles.noDataText}>No tasks available</Text>
+      <Text style={styles.noDataText}>No tasks available</Text>
   );
-
+  const renderItem = ({ item }) => {
+    return <TaskItem task={item} navigation={navigation} />;
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Button
@@ -18,7 +20,7 @@ const TaskList = ({ navigation }) => {
       />
       <FlatList
         data={tasks}
-        renderItem={({ item }) => <TaskItem task={item} navigation={navigation} />}
+        renderItem={renderItem}
         keyExtractor={(item) => item._id}
         scrollEnabled={true}
         ListEmptyComponent={noData}

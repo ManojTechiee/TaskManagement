@@ -7,10 +7,10 @@ import CustomButton from '../../components/customButton/index';
 const TaskForm = ({ route, navigation }) => {
 
   const { addTask, updateTask } = useContext(TaskContext);
-  const [title, setTitle] = useState(route.params?.task?.title || '');
-  const [description, setDescription] = useState(route.params?.task?.description || '');
-  const isUpdate = Boolean(route.params?.task);
-
+  const { task } = route.params || {};
+  const [title, setTitle] = useState(task?.title || '');
+  const [description, setDescription] = useState(task?.description || '');
+  const isUpdate = Boolean(task);
 
   const handleSubmit = () => {
     if (!title.trim()) {
@@ -19,7 +19,7 @@ const TaskForm = ({ route, navigation }) => {
     }
     const newTask = { title, description };
     if (isUpdate) {
-      updateTask(route.params.task._id, newTask);
+      updateTask(task._id, newTask);
     } else {
       addTask(newTask);
     }
@@ -50,12 +50,12 @@ const TaskForm = ({ route, navigation }) => {
         />
       </View>
       <CustomButton
-        text={isUpdate ? "Update Task" : "Add Task"}
-        onPress={handleSubmit}
-      />
-      <CustomButton
         text="Reset All"
         onPress={handleReset}
+      />
+      <CustomButton
+        text={isUpdate ? "Update Task" : "Add Task"}
+        onPress={handleSubmit}
       />
     </SafeAreaView>
   );
